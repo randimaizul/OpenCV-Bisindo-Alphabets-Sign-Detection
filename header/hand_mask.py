@@ -12,13 +12,12 @@ class HandMask:
         mask = frame[self.x0:self.y0, self.x1:self.y1]
         mask = cv2.GaussianBlur(mask, (5, 5), 0)
         #mask = cv2.fastNlMeansDenoisingColored(mask, None, 10, 10, 7, 21) #untuk mereduce noise
-        mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+        #mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
 
-        laplacian = cv2.Laplacian(mask, cv2.CV_64F)
-        sobelx = cv2.Sobel(mask, cv2.CV_64F, 1, 0, ksize=7)
-        sobely = cv2.Sobel(mask, cv2.CV_64F, 0, 1, ksize=7)
+        #laplacian = cv2.Laplacian(mask, cv2.CV_64F)
+        #sobelx = cv2.Sobel(mask, cv2.CV_64F, 1, 0, ksize=7)
+        #sobely = cv2.Sobel(mask, cv2.CV_64F, 0, 1, ksize=7)
 
-        img = cv2.addWeighted(sobelx, 0.5, sobely, 0.5, 0)
+        #img = cv2.addWeighted(sobelx, 0.5, sobely, 0.5, 0)
 
-        cv2.imshow('mask', laplacian)
-        cv2.moveWindow('mask', 650, 0)
+        return mask
