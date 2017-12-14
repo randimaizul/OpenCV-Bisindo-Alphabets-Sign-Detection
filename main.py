@@ -12,6 +12,7 @@ mask = hand_mask.HandMask(x0,y0,x1,y1)
 #cv2.VideoCapture(device), device is id of the opened video capturing device (i.e. a camera index). If there is a single camera connected, just pass 0.
 cap = cv2.VideoCapture(0)
 #pengambilan gambar
+i = 0
 while(cap.isOpened()):
     # Capture frame-by-frame (return_value, frame)
     ret, frame = cap.read()
@@ -21,7 +22,10 @@ while(cap.isOpened()):
     # perbaiki contrast dan blur
     frame = image_enhanchment.Enhancement.getNormContrast(frame)
     # mengambil mask frame untuk tangan
-    mask.getSource(frame)
+    hand = mask.getSource(frame)
+    cv2.imshow('mask', hand)
+    cv2.moveWindow('mask', 650, 0)
+    #membuat kotakan ijo di frame
     cv2.rectangle(frame, (x0,x1),(y0,y1), (0, 255, 0), 3)
 
     # print alphabet-nya
@@ -31,9 +35,18 @@ while(cap.isOpened()):
     cv2.imshow('frame',frame)
     cv2.moveWindow('frame', 0, 0)
     cv2.resizeWindow('frame',640,480)
-    k = cv2.waitKey(10)
-    if k == 27:
+
+    interrupt = cv2.waitKey(10)
+
+    # Quit by pressing 'q'
+    if interrupt & 0xFF == ord('q'):
         break
+    # Capture hand by pressing 'c'
+    elif interrupt & 0xFF == ord('p'):
+        i += 1
+        filename = "train_data/" + str(i) + ".png"
+        print(filename)
+        cv2.imwrite(filename, hand)
 
 # When everything done, release the capture
 cap.release()
