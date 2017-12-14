@@ -3,7 +3,7 @@ import cv2
 
 class Enhancement:
     def getNormContrast(img):
-        img = cv2.GaussianBlur(img, (5, 5), 0)
+        img = cv2.GaussianBlur(img, (3, 3), 0)
         hist, bins = np.histogram(img.flatten(), 256, [0, 256])
         cdf = hist.cumsum()
         cdf_m = np.ma.masked_equal(cdf, 0)
