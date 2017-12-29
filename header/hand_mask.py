@@ -9,8 +9,8 @@ class HandMask:
         self.y1 = y1
 
     def getSource(self,frame):
-        mask = frame[self.x0:self.y0, self.x1:self.y1]
-        mask = cv2.GaussianBlur(mask, (5, 5), 0)
+        mask = frame[self.x0:self.y0, self.x1:self.y1].copy()
+        #mask = cv2.GaussianBlur(mask, (5, 5), 0)
         #mask = cv2.fastNlMeansDenoisingColored(mask, None, 10, 10, 7, 21) #untuk mereduce noise
         #mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
 
