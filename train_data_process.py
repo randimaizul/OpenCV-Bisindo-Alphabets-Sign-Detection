@@ -12,8 +12,9 @@ for i in range(1,11):
     #cv2.imshow("threshold",thresh)
     gray_image = cv2.cvtColor(thresh, cv2.COLOR_BGR2GRAY)
 
-    th2 = cv2.adaptiveThreshold(gray_image,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,11,2)
+    #th2 = cv2.adaptiveThreshold(gray_image,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,11,2)
     th3 = cv2.adaptiveThreshold(gray_image,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
+
     #cv2.medianBlur(th3,3,th3)
     #cv2.imshow("th2",th2)
     #cv2.imshow("th3",th3)

@@ -19,7 +19,8 @@ while(cap.isOpened()):
     # flip agar miror(tidak membingungkan)
     cv2.flip(frame, 1, frame)
 
-    # perbaiki contrast dan blur
+    # Preprosesing : blur dan perbaiki contrast
+    frame = cv2.GaussianBlur(frame, (5, 5), 0)
     frame = image_enhanchment.Enhancement.getNormContrast(frame)
     # mengambil mask frame untuk tangan
     hand = mask.getSource(frame)
