@@ -1,0 +1,8 @@
+*.iml
+.idea/
+header/__pycache__/image_enhanchment.cpython-36.pyc
+header/__pycache__/hand_mask.cpython-36.pyc
+header/__pycache__/alphabet.cpython-36.pyc
+header/__pycache__/__init__.cpython-36.pyc
+test-keras.py
+rename.py
