@@ -60,7 +60,7 @@ model.add(Dense(145, kernel_initializer ='uniform', activation='relu'))
 model.add(Dense(24))
 model.add(Activation("softmax"))
 
-# train the model using SGD
+# train the model using Adam
 print("[INFO] compiling model...")
 model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
 model.fit(data, labels, epochs=50, batch_size=128, verbose=1)
